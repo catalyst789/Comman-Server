@@ -86,7 +86,7 @@ export const profilePic = async(req: Request, res: Response) => {
 
 export const logOut = async(req: Request, res: Response) => {
     try{
-        res.clearCookie('auth-cookie');
+        res.clearCookie('auth-cookie', {sameSite: "none", secure: true});
         return res.status(200).json({message: 'logout'});
     }catch(error){
         console.log(error);
